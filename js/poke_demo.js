@@ -29,7 +29,7 @@ function calcDist(lat1,lon1,lat2,lon2){
 
 getPokes = function (lat,lng){
 	$.ajax({
-	url: "http://127.0.0.1:5000/",
+	url: "http://192.168.1.3:5000/",
 	dataType: 'json',
 	data: { lat: lat, lng: lng },
 	success: function(data){
@@ -42,11 +42,11 @@ getPokes = function (lat,lng){
 		cells.forEach(function(cell){
 			if("catchable_pokemons" in cell){
 				cell.catchable_pokemons.forEach(function(pokemon){
-					var newRowS = '<tr id="'+pokemon.encounter_id+'">\
+					var newRowS = '<tr id="'+pokemon.encounter_id+'" pkdex="'+pokemon.pokemon_id+'" goto="Map" fx="DrawRoute" param="'+pokemon.pokemon_id+','+pokemon.expiration_timestamp_ms+','+lat+','+lng+','+pokemon.latitude+','+pokemon.longitude+'">\
 									<td><div class="pokeface"></div></td>\
-									<td><span></span></td>\
+									<td><br><span></span></br></td>\
 									<td><br>'+calcDist(lat,lng,pokemon.latitude,pokemon.longitude)+'</td>\
-									<td><br>'+(new Date(pokemon.expiration_timestamp_ms)).toLocaleTimeString( )+'</br><br>'+toMS((pokemon.expiration_timestamp_ms -Date.now()))+'</br></td>\
+									<td><br>'+(new Date(pokemon.expiration_timestamp_ms)).toLocaleTimeString( )+'</br><br><time end="'+pokemon.expiration_timestamp_ms+'">'+toMS((pokemon.expiration_timestamp_ms -Date.now()))+'</time></br></td>\
 							   </tr>';
 					 $("#pokeList tbody").append(newRowS);
 					$("#"+pokemon.encounter_id+" .pokeface").pokemonImgId(pokemon.pokemon_id);
@@ -68,25 +68,99 @@ getPokes = function (lat,lng){
 });
 }
 
- var map;
-    document.addEventListener("deviceready", function() {
-      var div = document.getElementById("map_canvas");
-
-      // Initialize the map view
-      map = plugin.google.maps.Map.getMap(div);
-
-      // Wait until the map is ready status.
-      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
-    }, false);
-
-    function onMapReady() {
  
-    }
 	
-
+geolocationSuccess = function(){
+	var onSuccess = function(position) {
+    alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' +
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + position.timestamp                + '\n');
+};
+}
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
+	GPSLocation.getCurrentPosition(geolocationSuccess);
 	//getPokes(9.933950, -84.073295);
-	navigator.geolocation.getCurrentPosition(getPokes);
+	//navigator.geolocation.getCurrentPosition(getPokes);
 }
 ,10000);
+
+setInterval(function(){
+	var tnow= Date.now();
+	$("time").each(function(){
+		$(this).html(toMS($(this).attr("end")-tnow));
+	});
+}
+,1000);
+
+
+
+
+function initMap() {
+  var chicago = {lat: 41.85, lng: -87.65};
+  var indianapolis = {lat: 39.79, lng: -86.14};
+
+  var map = new google.maps.Map(document.getElementById('map_canvas'), {
+    center: chicago,
+    scrollwheel: false,
+    zoom: 7
+  });
+
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+    map: map
+  });
+
+  // Set destination, origin and travel mode.
+  var request = {
+    destination: indianapolis,
+    origin: chicago,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+
+  // Pass the directions request to the directions service.
+  var directionsService = new google.maps.DirectionsService();
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      // Display the route on the map.
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
+function DrawRoute(pkId,t,olat,olng,dlat,dlng){
+	$('footer .pokeface').pokemonImgId(pkId);
+	$('footer time').attr("end",t)
+	var origin = {lat: olat, lng: olng};
+	var destination = {lat: dlat, lng: dlng};
+
+  var map = new google.maps.Map(document.getElementById('map_canvas'), {
+    center: origin,
+    scrollwheel: false,
+    zoom: 7
+  });
+
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+    map: map
+  });
+
+  // Set destination, origin and travel mode.
+  var request = {
+    destination: destination,
+    origin: origin,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+
+  // Pass the directions request to the directions service.
+  var directionsService = new google.maps.DirectionsService();
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      // Display the route on the map.
+      directionsDisplay.setDirections(response);
+    }
+  });
+}

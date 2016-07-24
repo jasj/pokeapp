@@ -49,6 +49,8 @@ footer{
     height: 75px;
     width: 100%;
     overflow:hidden;
+	
+	background: white;
 }
 
 .pokeface{
@@ -97,4 +99,49 @@ tr:nth-child(0){
   overflow-y: auto;
   height: 500px;
 }
+
+#map_canvas{
+	height: calc(100% - 76px);
+	width: 100%;
+}
+
+section{
+	position: absolute;
+	left: 0px;
+	right:0px;
+	top:108px;
+	bottom: 0px;
+	visibility: hidden;
+}
+
+section.active{
+	visibility: visible;
+}
+
+footer time{
+	position: absolute;
+    margin-top: 32px;
+    float: left;
+    bottom: 25px;
+    left: 96px;
+}
+
+nav{
+	position: absolute;
+	right:	19px;
+	bottom: 19px;
+	color: gray;
+	font-size: 28px;
+	letter-spacing: 3px;
+}
+
+nav .active{
+	color: #2E6DB4;
+}
+
+.scroll tbdody td span{
+	margin-top:60px;
+}
+
+
 
