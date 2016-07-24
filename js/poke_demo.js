@@ -61,7 +61,7 @@ getPokes = function (lat,lng){
 	},
 	error: function(data,e,e1){
 		console.dir(data);
-		console.dir(e);
+		alert(JSON.stringify(e));
 		console.dir(e1);
 	},
 	complete: function(data){
@@ -86,11 +86,11 @@ geolocationSuccess = function(){
 }
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
-	
+	alert("10b");
 	//GPSLocation.getCurrentPosition(geolocationSuccess);
 	getPokes(9.933950, -84.073295);
 	//navigator.geolocation.getCurrentPosition(getPokes);
-
+	alert("10e");
 }
 ,10000);
 
