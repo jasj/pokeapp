@@ -1,3 +1,4 @@
+alert("begin");
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
 }
@@ -164,3 +165,5 @@ function DrawRoute(pkId,t,olat,olng,dlat,dlng){
     }
   });
 }
+
+alert("end");
