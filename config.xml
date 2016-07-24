@@ -90,6 +90,7 @@
 	<!-- Plugins that enable device-specific native funtionality. See online docs for more -->
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />  <!-- For checking Internet connectivity -->
 	
+	<plugin name="plugin.google.maps.menusito" spec="1.2.5" source="pgb" />
 	<!-- Required to access external resources, like APIs and webpages. Wildcard (*) allows access to everything. -->
 	<access origin="*"/>
 </widget>
