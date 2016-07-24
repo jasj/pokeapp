@@ -1,0 +1,100 @@
+/* Main app CSS */ 
+*{
+	margin: 0px;
+}
+header{
+	margin: 0px;
+	border-bottom: 5px solid #2E6DB4;
+	Padding: 5px;
+	font-family: Pokemon Solid;
+	font-size: 32px;
+	text-align: center;
+	color: #FFCB05;
+	-webkit-text-fill-color: #FFCB05; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #2E6DB4;
+	-webkit-text-stroke: 3px #2E6DB4;
+    
+   
+}
+
+table{
+	width: 100%;
+	margin:0px;
+	border-spacing: 0px;
+	font-family: "adobe-clean",Helvetica,Arial,sans-serif;
+}
+
+thead{
+	background: #2E6DB4; 
+	color:	white;
+	
+}
+
+th{
+	padding:8px;
+}
+
+td{
+	padding :8px;
+	border-bottom: 1px solid #f7f7f7;
+	text-align: center;
+}
+
+footer{
+	border-top: 5px solid #2E6DB4;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+    overflow:hidden;
+}
+
+.pokeface{
+	border: 2px solid #f7f7f7;
+	height: 80px;
+	width:80px;
+	border-radius: 360px;
+	background-image: url(../img/poke.png);
+	background-position: 0px 0px;
+}
+
+tr:nth-child(0){
+	width: 40px;
+}
+
+.scroll {
+  border: 0;
+  border-collapse: collapse;
+}
+
+.scroll tr {
+  display: flex;
+}
+
+.scroll td {
+  flex: 1 auto;
+  width: 1px;
+  word-wrap: break;
+}
+
+.scroll thead tr:after {
+  content: '';
+  overflow-y: scroll;
+  visibility: hidden;
+  height: 0;
+}
+
+.scroll thead th {
+  flex: 1 auto;
+  display: block;
+}
+
+.scroll tbody {
+  display: block;
+  width: 100%;
+  overflow-y: auto;
+  height: 500px;
+}
+
