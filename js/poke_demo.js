@@ -1,4 +1,5 @@
 alert("begin 1");
+$.support.cors = true;
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
 }
