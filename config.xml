@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.website.appname" 
+        id          = "com.segreda.pokeapp" 
         versionCode = "1" 
         version     = "1.0.0">
     <!-- 'Id' is your app's unique namespace -->
     <!-- 'versionCode' is optional and Android only -->
 
-    <name>My App Name</name>
+    <name>PokeApp</name>
 
     <description>
         My app description.
     </description>
 
     <author href="http://www.website.com" email="email@email.com">
-        Your Name
+        Andres Segreda
     </author>
 
     <!-- The platforms to build for. Only build what you want to target! -->
