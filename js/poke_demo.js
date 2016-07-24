@@ -34,11 +34,12 @@ getPokes = function (lat,lng){
 	dataType: 'json',
 	data: { lat: lat, lng: lng },
 	success: function(data){
+		alert("until 1 all ok");
 		var obj=data;
 		console.dir(obj);
 		var cells = obj.responses.GET_MAP_OBJECTS.map_cells;
 
-
+		alert("until 2 all ok ");
 		$("#pokeList tbody").html("");
 		cells.forEach(function(cell){
 			if("catchable_pokemons" in cell){
@@ -64,7 +65,7 @@ getPokes = function (lat,lng){
 		console.dir(e1);
 	},
 	complete: function(data){
-		//console.dir(data);
+		alert("ok compleate");
 	}
 });
 }
@@ -85,11 +86,11 @@ geolocationSuccess = function(){
 }
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
-	alert("begin 10sec");
+	
 	//GPSLocation.getCurrentPosition(geolocationSuccess);
 	getPokes(9.933950, -84.073295);
 	//navigator.geolocation.getCurrentPosition(getPokes);
-	alert("end 10sec");
+
 }
 ,10000);
 
