@@ -27,3 +27,8 @@ $(document).on("click",'nav i',function(){
 	$("nav i.active").removeClass("active");
 	$(this).addClass("active");
 });
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+   alert(device.cordova);
+}
