@@ -64,7 +64,7 @@ getPokes = function (lat,lng){
 	error: function(data,e,e1){
 		console.dir(data);
 		alert(JSON.stringify(e));
-		console.dir(e1);
+		alert(JSON.stringify(e1));
 	},
 	complete: function(data){
 		alert("ok compleate");
