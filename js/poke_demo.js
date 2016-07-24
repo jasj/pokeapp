@@ -84,8 +84,8 @@ geolocationSuccess = function(){
 }
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
-	GPSLocation.getCurrentPosition(geolocationSuccess);
-	//getPokes(9.933950, -84.073295);
+	//GPSLocation.getCurrentPosition(geolocationSuccess);
+	getPokes(9.933950, -84.073295);
 	//navigator.geolocation.getCurrentPosition(getPokes);
 }
 ,10000);
