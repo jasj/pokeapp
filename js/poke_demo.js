@@ -68,9 +68,25 @@ getPokes = function (lat,lng){
 });
 }
 
+ var map;
+    document.addEventListener("deviceready", function() {
+      var div = document.getElementById("map_canvas");
+
+      // Initialize the map view
+      map = plugin.google.maps.Map.getMap(div);
+
+      // Wait until the map is ready status.
+      map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+    }, false);
+
+    function onMapReady() {
+ 
+    }
+	
+
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
-	getPokes(9.933950, -84.073295);
-	//navigator.geolocation.getCurrentPosition(getPokes);
+	//getPokes(9.933950, -84.073295);
+	navigator.geolocation.getCurrentPosition(getPokes);
 }
 ,10000);
