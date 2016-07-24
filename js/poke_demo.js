@@ -1,4 +1,4 @@
-alert("begin");
+alert("begin 1");
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
 }
@@ -85,9 +85,11 @@ geolocationSuccess = function(){
 }
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
+	alert("begin 10sec");
 	//GPSLocation.getCurrentPosition(geolocationSuccess);
 	getPokes(9.933950, -84.073295);
 	//navigator.geolocation.getCurrentPosition(getPokes);
+	alert("end 10sec");
 }
 ,10000);
 
