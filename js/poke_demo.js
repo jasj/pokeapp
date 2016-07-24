@@ -31,7 +31,8 @@ function calcDist(lat1,lon1,lat2,lon2){
 getPokes = function (lat,lng){
 	$.ajax({
 	url: "http://192.168.1.3:5000/",
-	dataType: 'json',
+	dataType: 'jsonp',
+	crossDomain : true,
 	data: { lat: lat, lng: lng },
 	success: function(data){
 		alert("until 1 all ok");
@@ -88,6 +89,7 @@ geolocationSuccess = function(){
 setInterval(function (){
 	alert("10b");
 	//GPSLocation.getCurrentPosition(geolocationSuccess);
+	//navigator.geolocation.getCurrentPosition(getPokes);
 	getPokes(9.933950, -84.073295);
 	//navigator.geolocation.getCurrentPosition(getPokes);
 	alert("10e");
