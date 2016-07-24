@@ -3,6 +3,12 @@
 	margin: 0px;
 }
 header{
+	position:absolute;
+	left: 0px;
+	top:0px;
+	right:0px;
+	height:100px;
+	
 	margin: 0px;
 	border-bottom: 5px solid #2E6DB4;
 	Padding: 5px;
@@ -109,7 +115,7 @@ section{
 	position: absolute;
 	left: 0px;
 	right:0px;
-	top:108px;
+	top: 117px;
 	bottom: 0px;
 	visibility: hidden;
 }
