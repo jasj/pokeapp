@@ -71,14 +71,13 @@ getPokes = function (lat,lng){
 });
 }
 
-
+geolocationSuccess = function(location){
+	getPokes(location.coords.latitude, location.coords.longitude );
+}
 
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
-	//GPSLocation.getCurrentPosition(geolocationSuccess);
-	//navigator.geolocation.getCurrentPosition(getPokes);
-	getPokes(9.933950, -84.073295);
-	//navigator.geolocation.getCurrentPosition(getPokes);
+	 navigator.geolocation.getCurrentPosition(geolocationSuccess);
 }
 ,10000);
 
