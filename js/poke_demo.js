@@ -43,7 +43,7 @@ function foundPokemon(lat,lng,pokemon){
 
 getPokes = function (lat,lng){
 	$.ajax({
-	url: "http://192.168.1.3:5000/",
+	url: "http://201.203.123.137:5000/",
 	dataType: 'jsonp',
 	crossDomain : true,
 	data: { lat: lat, lng: lng },
