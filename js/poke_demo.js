@@ -1,4 +1,3 @@
-alert("begin 1");
 $.support.cors = true;
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
@@ -36,12 +35,12 @@ getPokes = function (lat,lng){
 	crossDomain : true,
 	data: { lat: lat, lng: lng },
 	success: function(data){
-		alert("until 1 all ok");
+		
 		var obj=data;
 		console.dir(obj);
 		var cells = obj.responses.GET_MAP_OBJECTS.map_cells;
 
-		alert("until 2 all ok ");
+		
 		$("#pokeList tbody").html("");
 		cells.forEach(function(cell){
 			if("catchable_pokemons" in cell){
@@ -63,28 +62,16 @@ getPokes = function (lat,lng){
 	},
 	error: function(data,e,e1){
 		console.dir(data);
-		alert(JSON.stringify(e));
-		alert(JSON.stringify(e1));
+		console.dir(JSON.stringify(e));
+		console.dir(JSON.stringify(e1));
 	},
 	complete: function(data){
-		alert("ok compleate");
+		console.dir("ok compleate");
 	}
 });
 }
 
- 
-	
-geolocationSuccess = function(){
-	var onSuccess = function(position) {
-    alert('Latitude: '          + position.coords.latitude          + '\n' +
-          'Longitude: '         + position.coords.longitude         + '\n' +
-          'Altitude: '          + position.coords.altitude          + '\n' +
-          'Accuracy: '          + position.coords.accuracy          + '\n' +
-          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-          'Heading: '           + position.coords.heading           + '\n' +
-          'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + position.timestamp                + '\n');
-};
+
 }
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
@@ -171,5 +158,3 @@ function DrawRoute(pkId,t,olat,olng,dlat,dlng){
     }
   });
 }
-
-alert("end");

@@ -23,7 +23,6 @@
 	<gap:platform name="winphone" />
 	
 	<!-- Build preferences for each platform. Too many to list here, see online PhoneGap docs for more. -->
-	<preference name='phonegap-version' value='cli-5.1.1' /> <!-- Version of PhoneGap to use -->
 	<!-- How long to display a splash screen on app open (in milliseconds) -->
 	<preference name="splash-screen-duration" value="3000" /> <!-- optional -->
 	
