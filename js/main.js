@@ -30,7 +30,7 @@ $(document).on("click",'nav i',function(){
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-	console.log(ready);
+	console.log("ready");
    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
