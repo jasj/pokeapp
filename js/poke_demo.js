@@ -64,7 +64,7 @@ getPokes = function (lat,lng){
 			if("forts" in cell){
 				cell.forts.forEach(function(fort){
 					if("lure_info" in fort){
-						pokemon = {
+						var pokemon = {
 							encounter_id = fort.lure_info.fort_id,
 							pokemon_id = fort.lure_info.active_pokemon_id,
 							latitude = fort.latitude,
