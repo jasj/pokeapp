@@ -27,6 +27,19 @@ function calcDist(lat1,lon1,lat2,lon2){
 	return parseFloat(d*1000).toFixed(2);;
 }
 
+function foundPokemon(lat,lng,pokemon){
+	var newRowS = '<tr id="'+pokemon.encounter_id+'" pkdex="'+pokemon.pokemon_id+'" goto="Map" fx="DrawRoute" param="'+pokemon.pokemon_id+','+pokemon.expiration_timestamp_ms+','+lat+','+lng+','+pokemon.latitude+','+pokemon.longitude+'">\
+									<td><div class="pokeface"></div></td>\
+									<td><br><span></span></br></td>\
+									<td><br>'+calcDist(lat,lng,pokemon.latitude,pokemon.longitude)+'</td>\
+									<td><br>'+(new Date(pokemon.expiration_timestamp_ms)).toLocaleTimeString( )+'</br><br><time end="'+pokemon.expiration_timestamp_ms+'">'+toMS((pokemon.expiration_timestamp_ms -Date.now()))+'</time></br></td>\
+							   </tr>';
+					 $("#pokeList tbody").append(newRowS);
+					$("#"+pokemon.encounter_id+" .pokeface").pokemonImgId(pokemon.pokemon_id);
+					$("#"+pokemon.encounter_id+" span:eq(0)").pokemonLabelId(pokemon.pokemon_id);
+					console.log(pokemon.encounter_id+":"+pokemon.pokemon_id);
+}
+
 
 getPokes = function (lat,lng){
 	$.ajax({
@@ -45,16 +58,21 @@ getPokes = function (lat,lng){
 		cells.forEach(function(cell){
 			if("catchable_pokemons" in cell){
 				cell.catchable_pokemons.forEach(function(pokemon){
-					var newRowS = '<tr id="'+pokemon.encounter_id+'" pkdex="'+pokemon.pokemon_id+'" goto="Map" fx="DrawRoute" param="'+pokemon.pokemon_id+','+pokemon.expiration_timestamp_ms+','+lat+','+lng+','+pokemon.latitude+','+pokemon.longitude+'">\
-									<td><div class="pokeface"></div></td>\
-									<td><br><span></span></br></td>\
-									<td><br>'+calcDist(lat,lng,pokemon.latitude,pokemon.longitude)+'</td>\
-									<td><br>'+(new Date(pokemon.expiration_timestamp_ms)).toLocaleTimeString( )+'</br><br><time end="'+pokemon.expiration_timestamp_ms+'">'+toMS((pokemon.expiration_timestamp_ms -Date.now()))+'</time></br></td>\
-							   </tr>';
-					 $("#pokeList tbody").append(newRowS);
-					$("#"+pokemon.encounter_id+" .pokeface").pokemonImgId(pokemon.pokemon_id);
-					$("#"+pokemon.encounter_id+" span:eq(0)").pokemonLabelId(pokemon.pokemon_id);
-					console.log(pokemon.encounter_id+":"+pokemon.pokemon_id);
+					foundPokemon(lat,lng,pokemon)
+				});
+			}
+			if("forts" in cell){
+				cell.forts.forEach(function(fort){
+					if("lure_info" in fort){
+						pokemon = {
+							encounter_id = fort.lure_info.fort_id,
+							pokemon_id = fort.lure_info.active_pokemon_id,
+							latitude = fort.latitude,
+							longitude = fort.longitude,
+							expiration_timestamp_ms = fort.lure_info.lure_expires_timestamp_ms
+						};
+						foundPokemon(lat,lng,pokemon);
+					}
 				});
 			}
 			
