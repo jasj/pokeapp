@@ -72,7 +72,7 @@ getPokes = function (lat,lng){
 }
 
 
-}
+
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
 	alert("10b");
