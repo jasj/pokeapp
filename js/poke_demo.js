@@ -65,11 +65,11 @@ getPokes = function (lat,lng){
 				cell.forts.forEach(function(fort){
 					if("lure_info" in fort){
 						var pokemon = {
-							encounter_id = fort.lure_info.fort_id,
-							pokemon_id = fort.lure_info.active_pokemon_id,
-							latitude = fort.latitude,
-							longitude = fort.longitude,
-							expiration_timestamp_ms = fort.lure_info.lure_expires_timestamp_ms
+							"encounter_id" = fort.lure_info.fort_id,
+							"pokemon_id" = fort.lure_info.active_pokemon_id,
+							"latitude" = fort.latitude,
+							"longitude" = fort.longitude,
+							"expiration_timestamp_ms" = fort.lure_info.lure_expires_timestamp_ms
 						};
 						foundPokemon(lat,lng,pokemon);
 					}
