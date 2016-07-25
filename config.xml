@@ -94,4 +94,9 @@
 	
 	<!-- Required to access external resources, like APIs and webpages. Wildcard (*) allows access to everything. -->
 	<access origin="*" subdomains="true" />
+	
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
+	<access origin="*" />
+	<allow-intent href="*" />
+	<allow-navigation href="*" />
 </widget>
