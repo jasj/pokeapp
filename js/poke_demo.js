@@ -75,12 +75,10 @@ getPokes = function (lat,lng){
 
 //navigator.geolocation.getCurrentPosition(getPokes);
 setInterval(function (){
-	alert("10b");
 	//GPSLocation.getCurrentPosition(geolocationSuccess);
 	//navigator.geolocation.getCurrentPosition(getPokes);
 	getPokes(9.933950, -84.073295);
 	//navigator.geolocation.getCurrentPosition(getPokes);
-	alert("10e");
 }
 ,10000);
 

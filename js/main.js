@@ -30,11 +30,12 @@ $(document).on("click",'nav i',function(){
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+	console.log(ready);
    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 
 var onSuccess = function(position) {
-    alert('Latitude: '          + position.coords.latitude          + '\n' +
+    console.log('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
           'Altitude: '          + position.coords.altitude          + '\n' +
           'Accuracy: '          + position.coords.accuracy          + '\n' +
